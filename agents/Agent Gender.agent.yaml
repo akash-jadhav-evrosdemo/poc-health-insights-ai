@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://aka.ms/ai-foundry-vsc/agent/1.0.0
+version: 1.0.0
+id: asst_AYJnx5yOAMJltCQp3fzlbiaP
+name: Agent Gender
+tools:
+  - type: openapi
+    id: GetGender
+    description: 
+    options:
+      specification: >-
+        {"openapi":"3.0.0","info":{"title":"Genderize.io
+        API","description":"Predict gender from first names using
+        Genderize.io","version":"1.0.0"},"servers":[{"url":"https://api.genderize.io","description":"Genderize.io
+        public API"}],"paths":{"/":{"get":{"summary":"Predict gender from a
+        name","operationId":"predictGender","parameters":[{"name":"name","in":"query","required":true,"schema":{"type":"string"},"description":"First
+        name to predict gender
+        for"},{"name":"country_id","in":"query","required":false,"schema":{"type":"string"},"description":"ISO
+        3166-1 alpha-2 country
+        code"},{"name":"name[]","in":"query","required":false,"schema":{"type":"array","items":{"type":"string"}},"description":"Array
+        of names for batch prediction (up to
+        10)"}],"responses":{"200":{"description":"Successful
+        response","content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string"},"gender":{"type":"string"},"probability":{"type":"number"},"count":{"type":"integer"}}}}}},"401":{"description":"Unauthorized
+        (invalid API key)"},"429":{"description":"Rate limit
+        exceeded"}}}}},"components":{"securitySchemes":{"apiKeyHeader":{"type":"apiKey","name":"apikey","in":"query"}}},"security":[{"apiKeyHeader":[]}]}
+      auth:
+        type: anonymous
+metadata: {}
+description: 
+instructions: Using name you have to hit api in action and return gender
+model:
+  id: gpt-4.1
+  options:
+    temperature: 0.27
+    top_p: 1
